@@ -7,3 +7,10 @@
     <a href="{{ url_for('index') }}"> Ir a Inicio</a>
 
 {% endif %}
+
+
+<ul>
+    {% for TODO in TODOS %}
+        <li>{{ TODO }}</li>
+    {% endfor %}
+</ul>
