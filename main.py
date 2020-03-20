@@ -1,5 +1,8 @@
 from flask import Flask, request, make_response, redirect, render_template, session
 from flask_bootstrap import Bootstrap
+from wtforms import Form, StringField, SubmitField, PasswordField
+from wtforms.validators import DataRequired
+
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -7,6 +10,11 @@ bootstrap = Bootstrap(app)
 TODOS = ['Comprar cafe', 'Enviar solicitud de ', 'Aprender Flask']
 
 app.config['SECRET_KEY'] = 'SUPER SEGURO'
+
+class LoginForm(Form):
+    username =  StringField('User name', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    submit = SubmitField('Submit')
 
 
 @app.errorhandler(404)
@@ -34,9 +42,16 @@ def index():
 @app.route('/hello')
 def hello():
     user_ip = session.get('user_ip')
+    login_form = LoginForm()
+
     context = {
          'user_ip' : user_ip, 
          'TODOS' : TODOS,
+         'login_form' : login_form
     }
 
     return render_template('hello.html', **context)
+
+
+##if __name__ == "__main__":
+##    app.run(debug=True)
