@@ -9,37 +9,25 @@
 
 
 {% block content %}
-
     {% if username %}
-
-        <h1>Welcome, {{ username | capitalize }}</h1>
-    
-    {% else %}
-
-        <h3>Sorry we can't get you your Name</h3>
-
+        <h1>Welcome, {{ username | capitalize }}!</h1>
     {% endif %}
-    
 
+    
     {% if user_ip %}
-
         <h3>Your IP is {{ user_ip }}</h3>
-
     {% else %}
-
         <h3>Sorry we can't get you your IP</h3>
-
     {% endif %}
-
-
+    
+    
     <ul>
         {% for TODO in TODOS %}
             {{ macros.render_todo(TODO) }}
         {% endfor %}
     </ul>
 
-    <div class="container">
-
+    <div class="container"><!--
         <form action="{{ url_for('hello')}}" method="POST">
             <div class="form-group">
                 {{ login_form.username.label }}
@@ -52,7 +40,8 @@
             
             {{ login_form.submit }}
             
-          </form>        
+          </form>--> 
 
+          {{ wtf.quick_form(login_form) }}
     </div>
 {% endblock %}

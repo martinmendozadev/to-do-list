@@ -1,8 +1,9 @@
-from flask import Flask, request, make_response, redirect, render_template, session, url_for
+from flask import Flask, request, make_response, redirect, render_template, session, url_for, flash
 from flask_bootstrap import Bootstrap
-from wtforms import Form, StringField, SubmitField, PasswordField
+from flask_wtf import FlaskForm
+from wtforms.fields import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired
-
+import unittest
 
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
@@ -11,10 +12,16 @@ TODOS = ['Comprar cafe', 'Enviar solicitud de ', 'Aprender Flask']
 
 app.config['SECRET_KEY'] = 'SUPER SEGURO'
 
-class LoginForm(Form):
+class LoginForm(FlaskForm):
     username =  StringField('User name', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Submit')
+
+
+@app.cli.command()
+def test():
+    tests = unittest.TestLoader().discover('tests')
+    unittest.TextTestRunner().run(tests)
 
 
 @app.errorhandler(404)
@@ -52,14 +59,16 @@ def hello():
          'username' : username
     }
 
-    if login_form.validate():
+    if login_form.validate_on_submit():
         username = login_form.username.data
         session['username'] = username
 
-        return redirect(url_for('indexs'))
+        flash('Usuario registrado correctamente')
+
+        return redirect(url_for('index'))
 
     return render_template('hello.html', **context)
 
 
-##if __name__ == "__main__":
-##    app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
