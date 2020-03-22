@@ -9,13 +9,25 @@
 
 
 {% block content %}
+
+    {% if username %}
+
+        <h1>Welcome, {{ username | capitalize }}</h1>
+    
+    {% else %}
+
+        <h3>Sorry we can't get you your Name</h3>
+
+    {% endif %}
+    
+
     {% if user_ip %}
 
-        <h1>Hello, marttCode. Your IP is {{ user_ip }}</h1>
+        <h3>Your IP is {{ user_ip }}</h3>
 
     {% else %}
 
-        <a href="{{ url_for('index') }}"> Ir a Inicio</a>
+        <h3>Sorry we can't get you your IP</h3>
 
     {% endif %}
 
