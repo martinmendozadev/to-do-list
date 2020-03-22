@@ -1,2 +1,2 @@
-class Confing:
+class Config:
     SECRET_KEY = 'SUPER SECRET'
