@@ -4,14 +4,10 @@ import unittest
 
 from app import create_app
 from app.forms import LoginForm
+from app.firebase_service import get_users, get_todos
 
 
 app = create_app()
-
-TODOS = ['Comprar cafe', 'Enviar solicitud de ', 'Aprender Flask']
-
-
-
 
 
 @app.cli.command()
@@ -42,25 +38,21 @@ def index():
     return response
 
 
-@app.route('/hello', methods=['GET', 'POST'])
+@app.route('/hello', methods=['GET'])
 def hello():
     user_ip = session.get('user_ip')
     username = session.get('username')
-    login_form = LoginForm()
 
     context = {
          'user_ip' : user_ip, 
-         'TODOS' : TODOS,
-         'login_form' : login_form,
+         'TODOS' : get_todos(user_id=username),
          'username' : username
     }
 
-    if login_form.validate_on_submit():
-        username = login_form.username.data
-        session['username'] = username
+    users = get_users()
 
-        flash('Usuario registrado correctamente')
-
-        return redirect(url_for('index'))
+    for user in users:
+        print(user.id)
+        print(user.to_dict()['password'])
 
     return render_template('hello.html', **context)
