@@ -1,10 +1,10 @@
 # TO DO LIST
-This is a project to make task online.
+This is a project to make tasks online.
 
 
 ### About
 
-A web project wrote in **Python** using **Flask** and some others libraries.
+A web project I wrote in **Python** using **Flask** and some others libraries.
 You can create a accounts for login and after make you own tasks.
 All data is saved on **Firebase**. I did some basic tests using **flask-testing**
 Session management through **flask-login** and the templates are made with **flask-wtf**
