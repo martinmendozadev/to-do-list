@@ -1,7 +1,16 @@
 # TO DO LIST
-This is a project to make to do list. (Flask, Firebase)
+This is a project to make task online.
 
-### Libraries for run
+
+### About
+
+A web project wrote in **Python** using **Flask** and some others libraries.
+You can create a accounts for login and after make you own tasks.
+All data is saved on **Firebase**. I did some basic tests using **flask-testing**
+Session management through **flask-login** and the templates are made with **flask-wtf**
+
+
+#### Libraries for run
 
 - flask==1.0.2
 - click==7.0
@@ -17,5 +26,5 @@ This is a project to make to do list. (Flask, Firebase)
 - flask-login==0.4.1
 
 
-#### I am marttCode 
-![Tux, the Linux mascot](https://static.platzi.com/media/avatars/avatars/marttcode_33b992ab-cb4a-4996-b604-d0989bf418c0.jpeg)
+##### I'm Martin Mendoza .-.
+![marttCode](https://static.platzi.com/media/avatars/avatars/marttcode_33b992ab-cb4a-4996-b604-d0989bf418c0.jpeg)
