@@ -21,6 +21,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ url_for('index') }}">Index</a></li>
                 <li><a href="https://platzi.com" target="_blank">Platzi</a></li>
+                <li><a href="http://marttcode.com" target="_blank">marttCode.com</a></li>
                 {% if current_user.is_authenticated %}
                     <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
                 {% else %}
