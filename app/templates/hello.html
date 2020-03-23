@@ -22,8 +22,8 @@
     
     
     <ul>
-        {% for TODO in TODOS %}
-            {{ macros.render_todo(TODO) }}
+        {% for todo in todos %}
+            {{ macros.render_todo(todo) }}
         {% endfor %}
     </ul>
 {% endblock %}

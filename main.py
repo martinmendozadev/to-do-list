@@ -45,14 +45,8 @@ def hello():
 
     context = {
          'user_ip' : user_ip, 
-         'TODOS' : get_todos(user_id=username),
+         'todos' : get_todos(user_id=username),
          'username' : username
     }
-
-    users = get_users()
-
-    for user in users:
-        print(user.id)
-        print(user.to_dict()['password'])
 
     return render_template('hello.html', **context)
