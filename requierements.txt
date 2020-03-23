@@ -9,3 +9,4 @@ flask-wtf==0.14.2
 flask-testing==0.7.1
 blinker==1.4
 firebase-admin==2.16.0
+flask-login==0.4.1
