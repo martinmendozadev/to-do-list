@@ -4,6 +4,9 @@ This is a project to make tasks online.
 
 ### About
 
+
+App to register, edit, delete a task list through the browser. Connected to a document database.
+
 A web project I wrote in **Python** using **Flask** and some others libraries.
 You can create a accounts for login and after make you own tasks.
 All data is saved on **Firebase**. I did some basic tests using **flask-testing**
